@@ -1,0 +1,11 @@
+services:
+  ai-daily:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./data:/app/data
+      - ./sites.yaml:/app/sites.yaml:ro
+    env_file:
+      - .env
+    restart: unless-stopped

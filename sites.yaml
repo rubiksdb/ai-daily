@@ -1,0 +1,335 @@
+sources:
+  # ── AI Company Blogs (RSS) ──────────────────────────────────────────
+  - name: OpenAI Blog
+    type: rss
+    feed_url: https://openai.com/blog/rss.xml
+    category: ai-companies
+
+  - name: Google DeepMind Blog
+    type: rss
+    feed_url: https://deepmind.google/blog/rss.xml
+    category: ai-companies
+
+  - name: Google AI Blog
+    type: rss
+    feed_url: https://blog.research.google/feeds/posts/default
+    category: ai-companies
+
+  - name: Meta AI Blog
+    type: rss
+    feed_url: https://ai.meta.com/blog/feed/
+    category: ai-companies
+
+  - name: Microsoft Research Blog
+    type: rss
+    feed_url: https://www.microsoft.com/en-us/research/feed/
+    category: ai-companies
+
+  - name: Mistral AI Blog
+    type: rss
+    feed_url: https://mistral.ai/feed
+    category: ai-companies
+
+  - name: Hugging Face Blog
+    type: rss
+    feed_url: https://huggingface.co/blog/feed.xml
+    category: ai-companies
+
+  - name: Weights & Biases Blog
+    type: rss
+    feed_url: https://wandb.ai/fully-connected/feed.xml
+    category: ai-companies
+
+  - name: LangChain Blog
+    type: rss
+    feed_url: https://blog.langchain.dev/rss/
+    category: ai-companies
+
+  # ── AI Company Blogs (scrape) ───────────────────────────────────────
+  - name: Anthropic News
+    type: scrape
+    url: https://www.anthropic.com/news
+    category: ai-companies
+    scrape:
+      item_selector: "article"
+      title_selector: "h2"
+      link_selector: "a"
+      date_selector: "time"
+
+  - name: Cohere Blog
+    type: scrape
+    url: https://cohere.com/blog
+    category: ai-companies
+    scrape:
+      item_selector: "article"
+      title_selector: "h2"
+      link_selector: "a"
+
+  - name: Perplexity Blog
+    type: scrape
+    url: https://www.perplexity.ai/hub/blog
+    category: ai-companies
+    scrape:
+      item_selector: "article"
+      title_selector: "h2"
+      link_selector: "a"
+
+  # ── Research & Media ────────────────────────────────────────────────
+  - name: The Gradient
+    type: rss
+    feed_url: https://thegradient.pub/rss/
+    category: research
+
+  - name: BAIR Blog
+    type: rss
+    feed_url: https://bair.berkeley.edu/blog/feed.xml
+    category: research
+
+  - name: The Batch (DeepLearning.AI)
+    type: rss
+    feed_url: https://www.deeplearning.ai/the-batch/feed/
+    category: research
+
+  # ── Influential People on Twitter/X ────────────────────────────────
+  - name: Sam Altman
+    type: twitter
+    handle: sama
+    category: people
+
+  - name: Andrej Karpathy
+    type: twitter
+    handle: karpathy
+    category: people
+
+  - name: Yann LeCun
+    type: twitter
+    handle: ylecun
+    category: people
+
+  - name: Demis Hassabis
+    type: twitter
+    handle: demishassabis
+    category: people
+
+  - name: Dario Amodei
+    type: twitter
+    handle: DarioAmodei
+    category: people
+
+  - name: Greg Brockman
+    type: twitter
+    handle: gdb
+    category: people
+
+  - name: Ilya Sutskever
+    type: twitter
+    handle: ilyasut
+    category: people
+
+  - name: Jim Fan
+    type: twitter
+    handle: drjimfan
+    category: people
+
+  - name: François Chollet
+    type: twitter
+    handle: fchollet
+    category: people
+
+  - name: Ethan Mollick
+    type: twitter
+    handle: emollick
+    category: people
+
+  - name: Swyx
+    type: twitter
+    handle: swyx
+    category: people
+
+  - name: Nathan Lambert
+    type: twitter
+    handle: natolambert
+    category: people
+
+  - name: Harrison Chase
+    type: twitter
+    handle: hwchase17
+    category: people
+
+  - name: Lex Fridman
+    type: twitter
+    handle: lexfridman
+    category: people
+
+  - name: Fei-Fei Li
+    type: twitter
+    handle: drfeifei
+    category: people
+
+  - name: Rowan Cheung
+    type: twitter
+    handle: rowancheung
+    category: people
+
+  # ── China AI Companies (scrape) ────────────────────────────────────
+  - name: DeepSeek Blog
+    type: scrape
+    url: https://www.deepseek.com/blog
+    category: china-ai
+    scrape:
+      item_selector: "article"
+      title_selector: "h2"
+      link_selector: "a"
+      date_selector: "time"
+
+  - name: Alibaba Qwen Blog
+    type: scrape
+    url: https://qwenlm.github.io
+    category: china-ai
+    scrape:
+      item_selector: "article"
+      title_selector: "h2"
+      link_selector: "a"
+      date_selector: "time"
+
+  - name: Zhipu AI Blog
+    type: scrape
+    url: https://zhipuai.cn/news
+    category: china-ai
+    scrape:
+      item_selector: "article"
+      title_selector: "h2"
+      link_selector: "a"
+
+  - name: 01.AI Blog
+    type: scrape
+    url: https://www.01.ai/blog
+    category: china-ai
+    scrape:
+      item_selector: "article"
+      title_selector: "h2"
+      link_selector: "a"
+      date_selector: "time"
+
+  - name: Moonshot AI Blog
+    type: scrape
+    url: https://www.moonshot.cn/news
+    category: china-ai
+    scrape:
+      item_selector: "article"
+      title_selector: "h2"
+      link_selector: "a"
+
+  - name: MiniMax Blog
+    type: scrape
+    url: https://www.minimaxi.com/news
+    category: china-ai
+    scrape:
+      item_selector: "article"
+      title_selector: "h2"
+      link_selector: "a"
+
+  - name: Baidu AI Blog
+    type: scrape
+    url: https://yiyan.baidu.com/blog
+    category: china-ai
+    scrape:
+      item_selector: "article"
+      title_selector: "h2"
+      link_selector: "a"
+      date_selector: "time"
+
+  - name: StepFun Blog
+    type: scrape
+    url: https://www.stepfun.com/news
+    category: china-ai
+    scrape:
+      item_selector: "article"
+      title_selector: "h2"
+      link_selector: "a"
+
+  - name: Baichuan AI Blog
+    type: scrape
+    url: https://www.baichuan-ai.com/news
+    category: china-ai
+    scrape:
+      item_selector: "article"
+      title_selector: "h2"
+      link_selector: "a"
+
+  # ── China AI People on Twitter/X ───────────────────────────────────
+  - name: DeepSeek (Twitter)
+    type: twitter
+    handle: deepseek_ai
+    category: china-ai
+
+  - name: Alibaba Qwen (Twitter)
+    type: twitter
+    handle: Qwen_LM
+    category: china-ai
+
+  - name: 01.AI (Twitter)
+    type: twitter
+    handle: 01ai_yi
+    category: china-ai
+
+  - name: Kai-Fu Lee
+    type: twitter
+    handle: kaifulee
+    category: china-ai
+
+  - name: Moonshot AI (Twitter)
+    type: twitter
+    handle: MoonshotAI_com
+    category: china-ai
+
+  # ── GitHub Releases ─────────────────────────────────────────────────
+  - name: OpenAI Python SDK
+    type: github_releases
+    repo: openai/openai-python
+    category: releases
+
+  - name: Anthropic Python SDK
+    type: github_releases
+    repo: anthropics/anthropic-sdk-python
+    category: releases
+
+  - name: Hugging Face Transformers
+    type: github_releases
+    repo: huggingface/transformers
+    category: releases
+
+  - name: LangChain
+    type: github_releases
+    repo: langchain-ai/langchain
+    category: releases
+
+  - name: Ollama
+    type: github_releases
+    repo: ollama/ollama
+    category: releases
+
+  - name: AutoGen
+    type: github_releases
+    repo: microsoft/autogen
+    category: releases
+
+  - name: Alibaba Qwen
+    type: github_releases
+    repo: QwenLM/Qwen2.5
+    category: releases
+
+  - name: DeepSeek V3
+    type: github_releases
+    repo: deepseek-ai/DeepSeek-V3
+    category: releases
+
+  - name: ChatGLM3
+    type: github_releases
+    repo: THUDM/ChatGLM3
+    category: releases
+
+  - name: 01.AI Yi
+    type: github_releases
+    repo: 01-ai/Yi
+    category: releases
