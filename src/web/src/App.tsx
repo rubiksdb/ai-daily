@@ -96,11 +96,16 @@ export default function App() {
   const perSource = data?.summaries.filter((s) => s.sourceId !== null) ?? [];
 
   return (
-    <div style={{ display: 'flex', minHeight: '100vh' }}>
+    <div style={styles.appContainer}>
+      <header style={styles.topBar}>
+        <div style={styles.topBarBrand}>
+          <span style={{ fontSize: 22 }}>🤖</span>
+          <span style={styles.topBarTitle}>AI Daily</span>
+        </div>
+      </header>
+      <div style={{ display: 'flex', flex: 1 }}>
       {/* Sidebar */}
       <aside style={styles.sidebar}>
-        <div style={styles.logo}>🤖 AI Daily</div>
-
         <div style={styles.sectionLabel}>Period</div>
         {PERIODS.map((p) => (
           <button
@@ -120,8 +125,7 @@ export default function App() {
           style={styles.dateInput}
         />
 
-        <div style={{ flex: 1 }} />
-
+        <div style={{ ...styles.sectionLabel, marginTop: 24 }}>Actions</div>
         <button style={styles.actionBtn} onClick={handlePoll}>
           ↻ Poll Now
         </button>
@@ -239,6 +243,7 @@ export default function App() {
           </>
         )}
       </main>
+      </div>
     </div>
   );
 }
@@ -327,106 +332,177 @@ function SummaryCard({ summary, lang }: { summary: Summary; lang: 'en' | 'zh' })
 }
 
 const styles: Record<string, React.CSSProperties> = {
-  sidebar: {
-    width: 200,
-    minWidth: 200,
-    background: '#1a202c',
-    padding: '24px 16px',
+  appContainer: {
     display: 'flex',
     flexDirection: 'column',
-    borderRight: '1px solid #2d3748',
+    minHeight: '100vh',
+    background: '#f8f9fa',
   },
-  logo: { fontSize: 18, fontWeight: 700, marginBottom: 24, color: '#fff' },
-  sectionLabel: { fontSize: 11, textTransform: 'uppercase', color: '#718096', marginBottom: 8, letterSpacing: 1 },
+  topBar: {
+    height: 64,
+    background: '#ffffff',
+    borderBottom: '1px solid #e8eaed',
+    display: 'flex',
+    alignItems: 'center',
+    padding: '0 24px',
+    flexShrink: 0,
+    boxShadow: '0 1px 3px rgba(60,64,67,.12)',
+    position: 'sticky' as const,
+    top: 0,
+    zIndex: 10,
+  },
+  topBarBrand: { display: 'flex', alignItems: 'center', gap: 12 },
+  topBarTitle: { fontSize: 22, fontWeight: 400, color: '#202124', letterSpacing: '-0.3px' },
+  sidebar: {
+    width: 256,
+    minWidth: 256,
+    background: '#f8f9fa',
+    padding: '12px 0 16px',
+    display: 'flex',
+    flexDirection: 'column',
+    flexShrink: 0,
+  },
+  sectionLabel: {
+    fontSize: 11,
+    fontWeight: 500,
+    textTransform: 'uppercase' as const,
+    color: '#5f6368',
+    letterSpacing: '0.8px',
+    marginBottom: 4,
+    padding: '4px 16px',
+  },
   navBtn: {
     background: 'none',
     border: 'none',
-    color: '#a0aec0',
-    textAlign: 'left',
-    padding: '8px 12px',
-    borderRadius: 6,
+    color: '#3c4043',
+    textAlign: 'left' as const,
+    padding: '0 16px',
+    borderRadius: 24,
     cursor: 'pointer',
     fontSize: 14,
-    width: '100%',
-    marginBottom: 4,
+    fontWeight: 500,
+    width: 'calc(100% - 16px)',
+    marginLeft: 8,
+    marginBottom: 2,
+    height: 40,
   },
-  navBtnActive: { background: '#2d3748', color: '#fff', fontWeight: 600 },
+  navBtnActive: { background: '#d2e3fc', color: '#0d47a1', fontWeight: 600 },
   dateInput: {
-    background: '#2d3748',
-    border: '1px solid #4a5568',
-    borderRadius: 6,
-    color: '#e2e8f0',
-    padding: '6px 10px',
+    background: '#ffffff',
+    border: '1px solid #dadce0',
+    borderRadius: 4,
+    color: '#202124',
+    padding: '8px 12px',
     fontSize: 13,
-    width: '100%',
+    width: 'calc(100% - 32px)',
+    margin: '0 16px',
+    display: 'block',
   },
   actionBtn: {
-    background: '#2b6cb0',
+    background: '#1a73e8',
     border: 'none',
-    borderRadius: 6,
-    color: '#fff',
-    padding: '8px 12px',
+    borderRadius: 4,
+    color: '#ffffff',
+    padding: '9px 16px',
     cursor: 'pointer',
-    fontSize: 13,
-    width: '100%',
+    fontSize: 14,
+    fontWeight: 500,
+    width: 'calc(100% - 32px)',
+    marginLeft: 16,
+    letterSpacing: '0.25px',
   },
   wechatBtn: { marginTop: 8, background: '#1aad19' },
-  actionMsg: { marginTop: 12, fontSize: 12, color: '#68d391', lineHeight: 1.4 },
-  main: { flex: 1, padding: '32px 40px', overflowY: 'auto' },
-  header: { display: 'flex', alignItems: 'baseline', gap: 16, marginBottom: 28 },
-  title: { fontSize: 28, fontWeight: 700, color: '#fff' },
-  dateRange: { color: '#718096', fontSize: 14 },
-  status: { color: '#a0aec0', padding: '40px 0' },
-  empty: { color: '#718096', padding: '60px 0', textAlign: 'center', fontSize: 15 },
+  actionMsg: { marginTop: 12, marginLeft: 16, fontSize: 12, color: '#137333', lineHeight: 1.4 },
+  main: { flex: 1, padding: '28px 40px', overflowY: 'auto' as const },
+  header: { display: 'flex', alignItems: 'center', gap: 16, marginBottom: 24, flexWrap: 'wrap' as const },
+  title: { fontSize: 24, fontWeight: 400, color: '#202124' },
+  dateRange: { color: '#5f6368', fontSize: 14 },
+  status: { color: '#5f6368', padding: '40px 0' },
+  empty: { color: '#5f6368', padding: '60px 0', textAlign: 'center' as const, fontSize: 15 },
   digestCard: {
-    background: '#1a202c',
-    border: '1px solid #4a5568',
-    borderRadius: 10,
+    background: '#ffffff',
+    borderRadius: 8,
     padding: 24,
-    marginBottom: 32,
+    marginBottom: 24,
     lineHeight: 1.7,
+    boxShadow: '0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15)',
   },
-  digestLabel: { fontWeight: 700, color: '#f6ad55', marginBottom: 16, fontSize: 14, textTransform: 'uppercase', letterSpacing: 1 },
-  sectionTitle: { fontSize: 16, fontWeight: 600, color: '#a0aec0', marginBottom: 16, textTransform: 'uppercase', letterSpacing: 1 },
-  grid: { display: 'grid', gap: 12 },
-  card: { background: '#1a202c', border: '1px solid #2d3748', borderRadius: 8 },
+  digestLabel: {
+    fontWeight: 500,
+    color: '#1a73e8',
+    marginBottom: 16,
+    fontSize: 11,
+    textTransform: 'uppercase' as const,
+    letterSpacing: '1px',
+  },
+  sectionTitle: {
+    fontSize: 11,
+    fontWeight: 500,
+    color: '#5f6368',
+    marginBottom: 12,
+    textTransform: 'uppercase' as const,
+    letterSpacing: '0.8px',
+  },
+  grid: { display: 'grid', gap: 8 },
+  card: {
+    background: '#ffffff',
+    borderRadius: 8,
+    boxShadow: '0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15)',
+  },
   cardHeader: { display: 'flex', alignItems: 'center', gap: 10, padding: '12px 16px' },
-  sourceName: { flex: 1, fontWeight: 600, fontSize: 14 },
-  categoryTag: { fontSize: 11, padding: '2px 8px', borderRadius: 4, fontWeight: 600 },
-  expandBtn: { background: 'none', border: 'none', color: '#718096', cursor: 'pointer', fontSize: 12 },
-  cardBody: { padding: '0 16px 16px', lineHeight: 1.7, borderTop: '1px solid #2d3748', paddingTop: 12 },
-  viewToggle: { marginLeft: 'auto', display: 'flex', gap: 4, background: '#1a202c', borderRadius: 8, padding: 4 },
+  sourceName: { flex: 1, fontWeight: 500, fontSize: 14, color: '#202124' },
+  categoryTag: { fontSize: 11, padding: '3px 8px', borderRadius: 12, fontWeight: 500 },
+  expandBtn: {
+    background: 'none',
+    border: 'none',
+    color: '#5f6368',
+    cursor: 'pointer',
+    fontSize: 12,
+    padding: '4px 8px',
+    borderRadius: 4,
+  },
+  cardBody: { padding: '12px 16px 16px', lineHeight: 1.7, borderTop: '1px solid #e8eaed', color: '#202124' },
+  viewToggle: {
+    marginLeft: 'auto',
+    display: 'flex',
+    gap: 0,
+    background: '#ffffff',
+    borderRadius: 24,
+    padding: 4,
+    border: '1px solid #dadce0',
+  },
   viewBtn: {
     background: 'none',
     border: 'none',
-    color: '#718096',
-    padding: '6px 14px',
-    borderRadius: 6,
+    color: '#3c4043',
+    padding: '6px 16px',
+    borderRadius: 20,
     cursor: 'pointer',
     fontSize: 13,
     fontWeight: 500,
+    letterSpacing: '0.1px',
   },
-  viewBtnActive: { background: '#2d3748', color: '#fff' },
+  viewBtnActive: { background: '#d2e3fc', color: '#1967d2', fontWeight: 600 },
   filterBar: { display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16, flexWrap: 'wrap' as const },
   filterChip: {
     background: 'none',
-    border: '1px solid #2d3748',
-    borderRadius: 20,
-    color: '#a0aec0',
-    padding: '4px 12px',
-    fontSize: 12,
+    border: '1px solid #dadce0',
+    borderRadius: 8,
+    color: '#3c4043',
+    padding: '6px 12px',
+    fontSize: 13,
     cursor: 'pointer',
     fontWeight: 500,
   },
-  filterChipActive: { background: '#2d3748', color: '#fff', borderColor: '#4a5568' },
+  filterChipActive: { background: '#d2e3fc', color: '#1967d2', borderColor: '#d2e3fc', fontWeight: 600 },
   articleRow: {
     display: 'flex',
     alignItems: 'center',
-    padding: '9px 16px',
-    borderBottom: '1px solid #2d3748',
+    padding: '10px 16px',
+    borderBottom: '1px solid #e8eaed',
     gap: 12,
   },
-  articleLink: { color: '#e2e8f0', textDecoration: 'none', fontSize: 13, flex: 1, lineHeight: 1.4 },
-  articleDate: { color: '#4a5568', fontSize: 12, whiteSpace: 'nowrap' as const },
-  articleCount: { fontSize: 12, color: '#4a5568', marginLeft: 'auto' },
+  articleLink: { color: '#202124', textDecoration: 'none', fontSize: 14, flex: 1, lineHeight: 1.4 },
+  articleDate: { color: '#5f6368', fontSize: 12, whiteSpace: 'nowrap' as const },
+  articleCount: { fontSize: 12, color: '#5f6368', marginLeft: 'auto' },
 };
